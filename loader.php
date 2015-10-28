@@ -1,4 +1,7 @@
 <?php
+if (!function_exists('foo')) {
+    function foo($a) {return $a;}
+}
 
 spl_autoload_extensions('php');
 spl_autoload_register(function ($class) {

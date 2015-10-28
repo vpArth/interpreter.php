@@ -58,14 +58,14 @@ class FL extends Language
     }
     protected function floatVal()
     {
-        return (new P\Float)->setHandler(new H\Value);
+        return foo(new P\Float)->setHandler(new H\Value);
     }
     protected function parenth()
     {
         $p = new P\Sequence();
-        $p->add((new P\Char('('))->discard());
+        $p->add(foo(new P\Char('('))->discard());
         $p->add($this->expression());
-        $p->add((new P\Char(')'))->discard());
+        $p->add(foo(new P\Char(')'))->discard());
         return $p;
     }
     protected function func()
@@ -80,7 +80,7 @@ class FL extends Language
     protected function argList()
     {
         $tail = new P\Sequence;
-        $tail->add((new P\Char(','))->discard());
+        $tail->add(foo(new P\Char(','))->discard());
         $tail->add($this->expression());
 
         $p = new P\Sequence;
