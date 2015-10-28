@@ -267,11 +267,6 @@ class Parser extends \PHPUnit_Framework_TestCase
             $this->assertFalse(true, 'Should exception thrown');
         } catch(\Exception $e){}
 
-        try {
-            foo(new I\Parser\Sequence)->add(null);
-            $this->assertFalse(true, 'Should exception thrown');
-        } catch(\Exception $e){}
-
         $a = new I\Parser\Alternative();
         $a->add(new I\Parser\Repeat(new I\Parser\Word('Точка'), 1));
         $a->add(new I\Parser\Word('Дочка'));
