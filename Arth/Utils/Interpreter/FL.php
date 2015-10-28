@@ -27,9 +27,11 @@ class FL extends Language
     }
 
     protected $interpreter;
-    public function evaluate(array $data = array())
+    public function evaluate(IContext $context = null)
     {
-        $context = new IContext;
+        if (is_null($context)) {
+            $context = new IContext;
+        }
         $this->interpreter->interpret($context);
         return $context->get($this->interpreter);
     }
@@ -86,7 +88,7 @@ class FL extends Language
         $p = new P\Sequence;
         $p->add($this->expression());
         $p->add(new P\Repeat($tail));
-        return $p;
+        return new P\MayBe($p);
     }
     protected function power(Parser $t)
     {

@@ -11,6 +11,7 @@ class Language extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         I\Expression\Func::register('twice', function($a){return 2*$a;});
+        I\Expression\Func::register('PI', function(){return pi();});
         I\Expression\Func::register('sin', function($a){return sin($a);});
         I\Expression\Func::register('cos', function($a){return cos($a);});
         I\Expression\Func::register('sum', function() {
@@ -32,8 +33,20 @@ class Language extends \PHPUnit_Framework_TestCase
         $fl = new I\FL('twice(3.14)');
         $this->assertEquals($fl->evaluate(), '6.28');
 
+        $fl = new I\FL('PI()');
+        $this->assertEquals($fl->evaluate(), pi());
+
         $fl = new I\FL('sum(cos(0), 2, 3, twice(2), 5)');
         $this->assertEquals($fl->evaluate(), '15');
+
+        $fl = new I\FL('sum(cos(0), 2, 3, twice(2), 5)');
+
+        $ctx = new I\IContext;
+        $ctx->regFunction('sum', function() {
+            return implode('', func_get_args());
+        });
+
+        $this->assertEquals($fl->evaluate($ctx), '12345');
     }
 
     public function testError()

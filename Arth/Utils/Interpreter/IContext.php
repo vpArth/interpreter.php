@@ -14,4 +14,15 @@ class IContext
     {
         return $this->data[$e->getKey()];
     }
+
+    // Custom functions
+    protected $functions = array();
+    public function regFunction($name, /*Callable*/ $foo)
+    {
+        $this->functions[$name] = $foo;
+    }
+    public function getFunction($name)
+    {
+        return isset($this->functions[$name]) ? $this->functions[$name] : null;
+    }
 }

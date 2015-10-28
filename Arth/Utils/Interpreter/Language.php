@@ -8,6 +8,7 @@ abstract class Language
     {
         $this->compile($statement);
     }
+
     abstract public function compile($statement);
-    abstract public function evaluate(array $data = array());
+    abstract public function evaluate(IContext $context = null);
 }
