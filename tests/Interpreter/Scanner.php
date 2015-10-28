@@ -35,7 +35,7 @@ class Scanner extends \PHPUnit_Framework_TestCase
         $this->assertSame('мир', $scan->token());
         $this->assertSame(I\Scanner::WORD, $scan->type());
         $this->assertSame(1, $scan->line());
-        $this->assertSame(14, $scan->char());
+        $this->assertSame(11, $scan->char());
 
         $scan->next(); // EOL
         $this->assertSame(I\Scanner::EOL, $scan->type());

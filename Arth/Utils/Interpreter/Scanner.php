@@ -80,7 +80,7 @@ class Scanner
             if ($ch !== false) $this->reader->back();
         } else $token .= $ch;
         $this->token = $token;
-        $this->char += mb_strlen($token);
+        $this->char += mb_strlen($token, 'UTF-8');
         // echo "\n\tToken($type): [{$this->token}] <{$this->line}, {$this->char}>\n";
         return $this;
     }
