@@ -58,7 +58,7 @@ class FL extends Language
     }
     protected function floatVal()
     {
-        return foo(new P\Float)->setHandler(new H\Value);
+        return foo(new P\FloatVal)->setHandler(new H\Value);
     }
     protected function parenth()
     {

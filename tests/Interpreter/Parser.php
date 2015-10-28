@@ -127,10 +127,10 @@ class Parser extends \PHPUnit_Framework_TestCase
     {
         $scan = self::scanner('98+14.2 0.3');
         $p = new I\Parser\Sequence;
-        $p->add(new I\Parser\Float('98'));
+        $p->add(new I\Parser\FloatVal('98'));
         $p->add(new I\Parser\Char('+'));
-        $p->add(new I\Parser\Float);
-        $p->add(new I\Parser\Float);
+        $p->add(new I\Parser\FloatVal);
+        $p->add(new I\Parser\FloatVal);
 
         $this->assertTrue($p->scan($scan));
 
@@ -277,12 +277,12 @@ class Parser extends \PHPUnit_Framework_TestCase
         $a->add(new I\Parser\Word('Дочка'));
         $this->assertFalse($a->scan(self::scanner('Почка Ночка')));
 
-        $p = new I\Parser\Float('3.14');
+        $p = new I\Parser\FloatVal('3.14');
         $this->assertTrue($p->scan(self::scanner('3.14')));
         $this->assertFalse($p->scan(self::scanner('3.16')));
         $this->assertFalse($p->scan(self::scanner('3.')));
         $this->assertFalse($p->scan(self::scanner('3')));
-        $p = new I\Parser\Float('3');
+        $p = new I\Parser\FloatVal('3');
         $this->assertTrue($p->scan(self::scanner('3')));
         $this->assertFalse($p->scan(self::scanner('2')));
         $this->assertFalse($p->scan(self::scanner('3.14')));

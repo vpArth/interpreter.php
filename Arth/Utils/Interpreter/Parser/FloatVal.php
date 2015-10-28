@@ -4,7 +4,7 @@ namespace Arth\Utils\Interpreter\Parser;
 use Arth\Utils\Interpreter\Parser;
 use Arth\Utils\Interpreter\Scanner;
 
-class Float extends Parser
+class FloatVal extends Parser
 {
     protected $number;
     public function __construct($number = null)
