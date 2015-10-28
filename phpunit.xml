@@ -1,0 +1,11 @@
+<phpunit verbose="true">
+    <testsuite name='Interpreter'>
+        <file>tests/Interpreter/Context.php</file>
+        <file>tests/Interpreter/Reader.php</file>
+        <file>tests/Interpreter/Scanner.php</file>
+        <file>tests/Interpreter/Parser.php</file>
+        <file>tests/Interpreter/Expression.php</file>
+        <file>tests/Interpreter/Handler.php</file>
+        <file>tests/Interpreter/Language.php</file>
+    </testsuite>
+</phpunit>
