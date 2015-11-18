@@ -51,7 +51,7 @@ Func::register('sum', function() {
     return array_sum(func_get_args());
 });
 Func::register('min', function() {return min(func_get_args());});
-Func::register('max', function() {return min(func_get_args());});
+Func::register('max', function() {return max(func_get_args());});
 Func::register('avg', function() {
     $mul = 1;
     foreach (func_get_args() as $i => $n) {

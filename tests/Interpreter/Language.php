@@ -78,6 +78,17 @@ class Language extends \PHPUnit_Framework_TestCase
             array('2^-2', '0.25'),
             array('2^-2+5', '5.25'),
             array('10-+(3.14*2-(0.2+0.08))', '4'),
+            array("'test'", 'test'),
+            array("const('pi')", M_PI),
+            array("const('exp')", M_E),
+            array("val('test')", 'test'),
+            array("val(12.3+0.2)", '12.5'),
+            array("ln(const('exp'))", '1'),
+            array("const('exp')^ln(const('pi'))", M_PI),
+            array("lg(10000)", 4),
+            array("min(5, -10)", -10),
+            array("max(6, -10, 7, 6, 7)", 7),
+            array("avg(4, 9)", 6),
         );
     }
     protected function tearDown()
