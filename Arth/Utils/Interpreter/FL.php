@@ -45,6 +45,7 @@ class FL extends Language
             $p->add($this->floatVal());
             $p->add($this->parenth());
             $p->add($this->func());
+            $p->add(foo(new P\Literal)->setHandler(new H\Literal));
             $m = $this->power($p);
 
             $a = new P\Alternative();
