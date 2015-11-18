@@ -3,7 +3,7 @@
 namespace tests\Interpreter;
 
 use Arth\Utils\Interpreter as I;
-
+use Arth\Utils\Interpreter\Expression\DivisionByZero as DivisionByZero;
 require_once __DIR__ . "/../../loader.php";
 
 class Language extends \PHPUnit_Framework_TestCase
@@ -51,8 +51,11 @@ class Language extends \PHPUnit_Framework_TestCase
 
     public function testError()
     {
-        try{new I\FL('(13+7'); $this->assertFalse(true);}catch(\Exception $e){}
-        try{new I\FL('2/0'); $this->assertFalse(true);}catch(\Exception $e){}
+        try {new I\FL('(13+7'); $this->assertFalse(true, 'Unpair parentheses');}catch(I\ParseError $e){}
+        try {foo(new I\FL('12/0'))->evaluate(); $this->assertFalse(true, 'DivisionByZero');
+        } catch (DivisionByZero $e) {
+            $this->assertEquals('Деление на 0', $e->getMessage());
+        }
     }
 
     public function flProvider()

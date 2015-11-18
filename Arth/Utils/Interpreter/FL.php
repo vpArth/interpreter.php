@@ -4,6 +4,7 @@ namespace Arth\Utils\Interpreter;
 
 use Arth\Utils\Interpreter\Parser as P;
 use Arth\Utils\Interpreter\Handler as H;
+use Arth\Utils\Interpreter\ParseError as Exception;
 
 class FL extends Language
 {
@@ -18,7 +19,7 @@ class FL extends Language
             $msg.=" line: {$scan->line()} ";
             $msg.=" char: {$scan->char()} ";
             $msg.=" token: \"{$scan->token()}\"";
-            throw new \Exception($msg);
+            throw new Exception($msg);
         }
 
         // $scan->getContext()->p();
