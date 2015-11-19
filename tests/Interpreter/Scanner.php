@@ -4,8 +4,6 @@ namespace tests\Interpreter;
 
 use Arth\Utils\Interpreter as I;
 
-require_once __DIR__ . "/../../loader.php";
-
 class Scanner extends \PHPUnit_Framework_TestCase
 {
     protected function setUp()

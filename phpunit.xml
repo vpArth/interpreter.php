@@ -1,4 +1,4 @@
-<phpunit verbose="true">
+<phpunit verbose="true" bootstrap="vendor/autoload.php">
     <testsuite name='Interpreter'>
         <file>tests/Interpreter/Context.php</file>
         <file>tests/Interpreter/Reader.php</file>

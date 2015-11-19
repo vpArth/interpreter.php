@@ -1,0 +1,26 @@
+{
+    "name": "arth/interpret",
+    "description": "Flexible php interpretator with customizable grammar",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alexander Deider",
+            "email": "arth.inbox+composer@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+      "php": ">=5.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Arth\\Utils\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Arth\\Utils\\": "src",
+            "\\": "tests"
+        }
+    }
+}

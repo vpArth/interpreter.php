@@ -4,8 +4,6 @@ namespace tests\Interpreter;
 
 use Arth\Utils\Interpreter as I;
 
-require_once __DIR__ . "/../../loader.php";
-
 class Parser extends \PHPUnit_Framework_TestCase
 {
     protected function setUp()
@@ -44,7 +42,7 @@ class Parser extends \PHPUnit_Framework_TestCase
         $p = new I\Parser\Char($char);
         for ($i = 0; $i<$cnt; $i++)
             $this->assertTrue($p->scan($scan));
-        $this->assertTrue(foo(new I\Parser\Char)->scan($scan));
+        $this->assertTrue((new I\Parser\Char)->scan($scan));
         $ctx = $scan->getContext();
         $this->assertEquals($cnt+1, $ctx->size());
         $this->assertEquals('!', $ctx->pop());
@@ -59,7 +57,7 @@ class Parser extends \PHPUnit_Framework_TestCase
         $p->add(new I\Parser\Number);
 
         $tail = new I\Parser\Sequence;
-        $tail->add(foo(new I\Parser\CharClass($chars))->discard());
+        $tail->add((new I\Parser\CharClass($chars))->discard());
         $tail->add(new I\Parser\Number);
         $p->add(new I\Parser\Repeat($tail));
 
@@ -74,9 +72,9 @@ class Parser extends \PHPUnit_Framework_TestCase
     {
         $scan = self::scanner('Lorem ipsum');
         $ctx = $scan->getContext();
-        $this->assertTrue(foo(new I\Parser\Word)->scan($scan));
+        $this->assertTrue((new I\Parser\Word)->scan($scan));
         $this->assertEquals('Lorem', $ctx->pop());
-        $this->assertTrue(foo(new I\Parser\Word('ipsum'))->scan($scan));
+        $this->assertTrue((new I\Parser\Word('ipsum'))->scan($scan));
         $this->assertEquals('ipsum', $ctx->pop());
     }
 
@@ -117,9 +115,9 @@ class Parser extends \PHPUnit_Framework_TestCase
     {
         $scan = self::scanner('16 144');
         $ctx = $scan->getContext();
-        $this->assertTrue(foo(new I\Parser\Number)->scan($scan));
+        $this->assertTrue((new I\Parser\Number)->scan($scan));
         $this->assertEquals('16', $ctx->pop());
-        $this->assertTrue(foo(new I\Parser\Number(144))->scan($scan));
+        $this->assertTrue((new I\Parser\Number(144))->scan($scan));
         $this->assertEquals('144', $ctx->pop());
     }
 
@@ -146,7 +144,7 @@ class Parser extends \PHPUnit_Framework_TestCase
 
     public function testSigned()
     {
-        $p = new I\Parser\Signed(foo(new I\Parser\Number)->setHandler(new I\Handler\Value));
+        $p = new I\Parser\Signed((new I\Parser\Number)->setHandler(new I\Handler\Value));
         $context = new I\IContext;
 
         foreach (array('-15', '+14') as $t) {

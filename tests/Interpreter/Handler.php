@@ -8,8 +8,6 @@ use Arth\Utils\Interpreter\Parser as P;
 use Arth\Utils\Interpreter\Scanner as S;
 use Arth\Utils\Interpreter\Expression as E;
 
-require_once __DIR__ . "/../../loader.php";
-
 class Handler extends \PHPUnit_Framework_TestCase
 {
 
@@ -59,7 +57,7 @@ class Handler extends \PHPUnit_Framework_TestCase
     {
         $p = new P\Sequence;
         $p->add(new P\Repeat(new P\CharClass(array('+', '-')), null, 1));
-        $p->add(foo(new P\Number)->setHandler(new H\Value));
+        $p->add((new P\Number)->setHandler(new H\Value));
         $p->setHandler(new H\Signed);
 
         $this->assertEquals($expected, $this->evaluate($p, $expression));
@@ -80,9 +78,9 @@ class Handler extends \PHPUnit_Framework_TestCase
     public function testOperator($expression, $expected)
     {
         $sum = new P\Sequence;
-        $sum->add(foo(new P\Number)->setHandler(new H\Value));
+        $sum->add((new P\Number)->setHandler(new H\Value));
         $sum->add(new P\CharClass(array('+', '-', '*', '/', '^')));
-        $sum->add(foo(new P\Number)->setHandler(new H\Value));
+        $sum->add((new P\Number)->setHandler(new H\Value));
         $sum->setHandler(new H\Operator);
 
         $this->assertEquals($expected, $this->evaluate($sum, $expression));

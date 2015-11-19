@@ -46,7 +46,7 @@ class FL extends Language
             $p->add($this->floatVal());
             $p->add($this->parenth());
             $p->add($this->func());
-            $p->add(foo(new P\Literal)->setHandler(new H\Literal));
+            $p->add((new P\Literal)->setHandler(new H\Literal));
             $m = $this->power($p);
 
             $a = new P\Alternative();
@@ -62,14 +62,14 @@ class FL extends Language
     }
     protected function floatVal()
     {
-        return foo(new P\FloatVal)->setHandler(new H\Value);
+        return (new P\FloatVal)->setHandler(new H\Value);
     }
     protected function parenth()
     {
         $p = new P\Sequence();
-        $p->add(foo(new P\Char('('))->discard());
+        $p->add((new P\Char('('))->discard());
         $p->add($this->expression());
-        $p->add(foo(new P\Char(')'))->discard());
+        $p->add((new P\Char(')'))->discard());
         return $p;
     }
     protected function func()
@@ -84,7 +84,7 @@ class FL extends Language
     protected function argList()
     {
         $tail = new P\Sequence;
-        $tail->add(foo(new P\Char(','))->discard());
+        $tail->add((new P\Char(','))->discard());
         $tail->add($this->expression());
 
         $p = new P\Sequence;

@@ -4,8 +4,6 @@ namespace tests\Interpreter;
 
 use Arth\Utils\Interpreter\Context as Ctx;
 
-require_once __DIR__ . "/../../loader.php";
-
 class Context extends \PHPUnit_Framework_TestCase
 {
     protected $ctx;

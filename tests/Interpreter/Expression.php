@@ -5,8 +5,6 @@ namespace tests\Interpreter;
 use Arth\Utils\Interpreter as I;
 use Arth\Utils\Interpreter\Expression as E;
 
-require_once __DIR__ . "/../../loader.php";
-
 class Expression extends \PHPUnit_Framework_TestCase
 {
     protected $ctx;
