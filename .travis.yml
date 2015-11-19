@@ -9,3 +9,6 @@ php:
 before_script:
   - composer self-update
   - composer install
+
+notifications:
+  email: arth.inbox+travis@gmail.com
