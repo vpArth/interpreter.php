@@ -72,6 +72,16 @@ class Expression extends \PHPUnit_Framework_TestCase
         $this->assertEquals("-4", ''.new E\Neg($lE));
     }
 
+    public function testFunctionNotFound()
+    {
+        $foo = new E\Func('abracadabra');
+        try {
+            $foo->interpret($this->ctx);
+            $this-assertTrue(false, 'FunctionNotFoundException should be thrown');
+        } catch (E\FunctionNotFoundException $e) {
+        }
+    }
+
     protected function tearDown()
     {
     }

@@ -1,5 +1,10 @@
 <phpunit verbose="true" bootstrap="vendor/autoload.php">
-    <testsuite name='Interpreter'>
+<filter>
+  <whitelist processUncoveredFilesFromWhitelist="true">
+    <directory suffix=".php">src</directory>
+  </whitelist>
+</filter>
+  <testsuite name='Interpreter'>
         <file>tests/Interpreter/Context.php</file>
         <file>tests/Interpreter/Reader.php</file>
         <file>tests/Interpreter/Scanner.php</file>

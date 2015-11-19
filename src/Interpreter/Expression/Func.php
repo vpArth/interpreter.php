@@ -24,7 +24,11 @@ class Func extends Expression
 
     function interpret(IContext $ctx)
     {
-        $foo = $ctx->getFunction($this->name) ?: self::$list[$this->name];
+        $foo = $ctx->getFunction($this->name) ?:
+            (isset(self::$list[$this->name]) ? self::$list[$this->name] : null);
+        if (!$foo) {
+            throw new FunctionNotFoundException("Function {$this->name} not found");
+        }
         $values = array_map(function($e) use($ctx){
             $e->interpret($ctx);
             return $ctx->get($e);
