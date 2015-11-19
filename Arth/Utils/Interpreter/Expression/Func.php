@@ -38,9 +38,7 @@ class Func extends Expression
     }
 }
 
-Func::register('val', function($a) {
-    return $a;
-});
+Func::register('val', function($a) {return $a; });
 Func::register('sin', function($a) {return sin($a); });
 Func::register('cos', function($a) {return cos($a); });
 Func::register('ln', function($a) {return log($a); });

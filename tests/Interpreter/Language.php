@@ -14,9 +14,6 @@ class Language extends \PHPUnit_Framework_TestCase
         I\Expression\Func::register('PI', function(){return pi();});
         I\Expression\Func::register('sin', function($a){return sin($a);});
         I\Expression\Func::register('cos', function($a){return cos($a);});
-        I\Expression\Func::register('sum', function() {
-            return array_sum(func_get_args());
-        });
     }
 
     /**
@@ -92,6 +89,8 @@ class Language extends \PHPUnit_Framework_TestCase
             array("min(5, -10)", -10),
             array("max(6, -10, 7, 6, 7)", 7),
             array("avg(4, 9)", 6),
+            array("concat('Hello', ', ', \"World\", '! ', 1)", 'Hello, World! 1'), // spaces in literals
+            array("trim('\t Alice\n\t Bob  \t')", "Alice\n\t Bob"),
         );
     }
     protected function tearDown()
