@@ -2,7 +2,6 @@
 
 namespace Arth\Utils\Interpreter\Parser;
 
-use Arth\Utils\Interpreter\Parser;
 use Arth\Utils\Interpreter\Scanner;
 
 class Alternative extends Collection

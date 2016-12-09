@@ -2,7 +2,6 @@
 
 namespace Arth\Utils\Interpreter\Expression;
 
-use Arth\Utils\Interpreter\Expression;
 use Arth\Utils\Interpreter\IContext;
 
 class Sub extends Operator

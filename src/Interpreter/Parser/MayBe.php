@@ -1,7 +1,6 @@
 <?php
 
 namespace Arth\Utils\Interpreter\Parser;
-use Arth\Utils\Interpreter\Parser;
 use Arth\Utils\Interpreter\Scanner;
 
 class MayBe extends Wrap

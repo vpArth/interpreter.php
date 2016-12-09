@@ -5,7 +5,6 @@ namespace tests\Interpreter;
 use Arth\Utils\Interpreter as I;
 use Arth\Utils\Interpreter\Handler as H;
 use Arth\Utils\Interpreter\Parser as P;
-use Arth\Utils\Interpreter\Scanner as S;
 use Arth\Utils\Interpreter\Expression as E;
 
 class Handler extends \PHPUnit_Framework_TestCase
