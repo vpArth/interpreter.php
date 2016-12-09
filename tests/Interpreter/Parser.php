@@ -145,7 +145,7 @@ class Parser extends \PHPUnit_Framework_TestCase
     public function testSigned()
     {
         $p = new I\Parser\Signed((new I\Parser\Number)->setHandler(new I\Handler\Value));
-        $context = new I\IContext;
+        new I\IContext;
 
         foreach (array('-15', '+14') as $t) {
             $scan = self::scanner($t);

@@ -77,7 +77,7 @@ class Expression extends \PHPUnit_Framework_TestCase
         $foo = new E\Func('abracadabra');
         try {
             $foo->interpret($this->ctx);
-            $this-assertTrue(false, 'FunctionNotFoundException should be thrown');
+            $this->assertTrue(false, 'FunctionNotFoundException should be thrown');
         } catch (E\FunctionNotFoundException $e) {
         }
     }
